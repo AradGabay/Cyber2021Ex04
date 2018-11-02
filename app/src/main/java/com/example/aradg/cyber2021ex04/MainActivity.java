@@ -9,36 +9,44 @@ public class MainActivity extends AppCompatActivity {
 
     int i;
     Button btn;
-    int kfulut;
-    int yehidot;
+    int kfulot = 7;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        kfulut = 2;
         i = 0;
-        yehidot=0;
+
         btn = (Button) findViewById(R.id.btnclick4);
     }
 
     public void onClick(View view) {
         i++;
+
         btn.setText("" + i);
-        if (i == 7+yehidot) {
+        if(checkSeven(i, kfulot) ||   (i%kfulot == 0)) {
             btn.setText("BOOM!");
-            yehidot=yehidot+10;}
-           else if (i==7*kfulut){
-               btn.setText("BOOM!");
-               kfulut++;
+        }
+    }
+
+    public boolean checkSeven(int num, int divider){
+            int modulo;
+            while (num> 10) {
+                modulo = num % 10;
+                if (modulo == divider) {
+                    return true;
+                }
+                num = num/10;
+        }
+            return false;
+        }
+
+
+
             }
 
-
-
-
-            }
-            }
 
 
 
